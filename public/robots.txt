@@ -1,0 +1,8 @@
+# Robots.txt for LineStack
+# https://linestack.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://linestack.vercel.app/sitemap.xml
