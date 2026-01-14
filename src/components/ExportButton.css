@@ -26,6 +26,37 @@
   font-weight: 500;
 }
 
+.export-risk {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.export-risk--low {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.export-risk--medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.export-risk--high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.export-notice {
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  background: #fef3c7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #92400e;
+  text-align: center;
+}
+
 .export-status {
   padding: 12px;
   margin-bottom: 16px;

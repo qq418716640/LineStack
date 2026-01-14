@@ -3,9 +3,10 @@ import './Header.css'
 interface Props {
   onTryClick: () => void
   onExamplesClick: () => void
+  onGoProClick: () => void
 }
 
-export function Header({ onTryClick, onExamplesClick }: Props) {
+export function Header({ onTryClick, onExamplesClick, onGoProClick }: Props) {
   return (
     <header className="header">
       <div className="header__container">
@@ -20,11 +21,14 @@ export function Header({ onTryClick, onExamplesClick }: Props) {
           <span className="header__logo-text">LineStack</span>
         </div>
         <nav className="header__nav">
-          <button className="header__nav-link" onClick={onTryClick}>
+          <button className="header__nav-link header__nav-link--primary" onClick={onTryClick}>
             Try LineStack
           </button>
           <button className="header__nav-link" onClick={onExamplesClick}>
             Examples
+          </button>
+          <button className="header__nav-link" onClick={onGoProClick}>
+            Go Pro
           </button>
         </nav>
       </div>

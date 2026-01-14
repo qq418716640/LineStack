@@ -64,11 +64,12 @@
   background: #f3f4f6;
 }
 
-.header__nav-link:first-child {
+.header__nav-link--primary {
   background: #6366f1;
   color: white;
 }
 
-.header__nav-link:first-child:hover {
+.header__nav-link--primary:hover {
   background: #5558e3;
+  color: white;
 }

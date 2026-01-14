@@ -74,6 +74,16 @@ export function ExportButton() {
   const keyframeCount = images.filter((img) => img.type === 'keyframe').length
   const subtitleCount = images.filter((img) => img.type === 'subtitle').length
 
+  // Calculate export risk based on image count and output width
+  const getExportRisk = (): { level: 'low' | 'medium' | 'high'; label: string } => {
+    const count = images.length
+    if (count <= 10) return { level: 'low', label: 'Low' }
+    if (count <= 20) return { level: 'medium', label: 'Medium' }
+    return { level: 'high', label: 'High' }
+  }
+
+  const exportRisk = getExportRisk()
+
   if (images.length === 0) {
     return null
   }
@@ -94,7 +104,19 @@ export function ExportButton() {
             {settings.enableKeyframeGap ? ` · ${settings.gapSize}px gap` : ''}
           </span>
         </div>
+        <div className="export-summary__row">
+          <span>Export Risk:</span>
+          <span className={`export-risk export-risk--${exportRisk.level}`}>
+            {exportRisk.label}
+          </span>
+        </div>
       </div>
+
+      {images.length > 15 && (
+        <div className="export-notice">
+          Long conversations may be split into multiple files automatically.
+        </div>
+      )}
 
       {exportProgress.status !== 'idle' && (
         <div

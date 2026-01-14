@@ -55,14 +55,15 @@ export async function processImages(
   const shouldAddGap = enableKeyframeGap && keyframeCount >= 2
 
   let totalHeight = 0
-  let prevWasKeyframe = false
+  let prevWasSubtitle = false
 
   for (const processed of processedImages) {
-    if (shouldAddGap && prevWasKeyframe && processed.isKeyframe) {
+    // Add gap when transitioning from subtitle to keyframe
+    if (shouldAddGap && prevWasSubtitle && processed.isKeyframe) {
       totalHeight += gapSize
     }
     totalHeight += processed.height
-    prevWasKeyframe = processed.isKeyframe
+    prevWasSubtitle = !processed.isKeyframe
   }
 
   // Split into segments if needed
@@ -106,10 +107,11 @@ function splitIntoSegments(
   const segments: Segment[] = []
   let currentSegment: ProcessedImage[] = []
   let currentHeight = 0
-  let prevWasKeyframe = false
+  let prevWasSubtitle = false
 
   for (const img of images) {
-    const gapBefore = shouldAddGap && prevWasKeyframe && img.isKeyframe ? gapSize : 0
+    // Add gap when transitioning from subtitle to keyframe
+    const gapBefore = shouldAddGap && prevWasSubtitle && img.isKeyframe ? gapSize : 0
     const neededHeight = gapBefore + img.height
 
     // Check if adding this image would exceed max height
@@ -118,14 +120,14 @@ function splitIntoSegments(
       segments.push({ images: currentSegment, height: currentHeight })
       currentSegment = []
       currentHeight = 0
-      prevWasKeyframe = false
+      prevWasSubtitle = false
     }
 
     // Recalculate gap for new segment context
-    const actualGap = shouldAddGap && prevWasKeyframe && img.isKeyframe ? gapSize : 0
+    const actualGap = shouldAddGap && prevWasSubtitle && img.isKeyframe ? gapSize : 0
     currentHeight += actualGap + img.height
     currentSegment.push(img)
-    prevWasKeyframe = img.isKeyframe
+    prevWasSubtitle = !img.isKeyframe
   }
 
   if (currentSegment.length > 0) {
@@ -154,11 +156,11 @@ async function renderSegment(
   ctx.fillRect(0, 0, width, height)
 
   let y = 0
-  let prevWasKeyframe = false
+  let prevWasSubtitle = false
 
   for (const img of images) {
-    // Add gap before keyframe if needed
-    if (shouldAddGap && prevWasKeyframe && img.isKeyframe) {
+    // Add gap when transitioning from subtitle to keyframe
+    if (shouldAddGap && prevWasSubtitle && img.isKeyframe) {
       ctx.fillStyle = backgroundColor
       ctx.fillRect(0, y, width, gapSize)
       y += gapSize
@@ -181,7 +183,7 @@ async function renderSegment(
     }
 
     y += img.height
-    prevWasKeyframe = img.isKeyframe
+    prevWasSubtitle = !img.isKeyframe
   }
 
   // Draw watermark if provided
