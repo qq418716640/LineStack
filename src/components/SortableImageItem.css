@@ -7,6 +7,8 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   transition: box-shadow 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .image-item:hover {
@@ -20,15 +22,23 @@
 .image-item__drag-handle {
   cursor: grab;
   color: #9ca3af;
-  padding: 4px;
+  padding: 12px;
+  margin: -8px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .image-item__drag-handle:active {
   cursor: grabbing;
+}
+
+.image-item__drag-handle svg {
+  pointer-events: none;
 }
 
 .image-item__preview-wrapper {
