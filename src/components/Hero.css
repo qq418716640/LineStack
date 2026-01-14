@@ -18,6 +18,44 @@
   background: #eef2ff;
   border-radius: 20px;
   margin-bottom: 24px;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 16px 60px;
+  }
+
+  .hero__badge {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__title-desc {
+    font-size: 22px;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+  }
+
+  .hero__value {
+    font-size: 14px;
+  }
+
+  .hero__cta-primary {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  .hero__trust-item {
+    font-size: 13px;
+  }
 }
 
 .hero__title {

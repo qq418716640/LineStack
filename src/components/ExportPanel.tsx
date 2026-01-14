@@ -154,7 +154,12 @@ export function ExportPanel({ disabled = false }: Props) {
               className="export-panel__crop-overlay"
               style={{ height: `${(1 - settings.bottomKeepRatio) * 100}%` }}
             />
-            <div className="export-panel__crop-label">Keep</div>
+            <div
+              className="export-panel__crop-divider"
+              style={{ top: `${(1 - settings.bottomKeepRatio) * 100}%` }}
+            >
+              <span className="export-panel__crop-label">Keep</span>
+            </div>
           </div>
           <div className="export-panel__crop-slider">
             <span>Less</span>

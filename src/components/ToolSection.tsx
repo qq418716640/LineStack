@@ -19,11 +19,6 @@ export const ToolSection = forwardRef<HTMLElement>((_props, ref) => {
           <p className="tool-section__subtitle">
             Upload your movie or TV screenshots, preserve subtitles, export as vertical story image
           </p>
-          <div className="tool-section__hints">
-            <span>Max 30 screenshots</span>
-            <span>JPG export</span>
-            <span>720px or 1080px</span>
-          </div>
         </div>
 
         <div className={`tool-section__content ${!hasImages ? 'tool-section__content--empty' : ''}`}>
