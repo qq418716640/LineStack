@@ -26,19 +26,37 @@
   color: #1f2937;
   line-height: 1.2;
   margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero__title-brand {
+  color: #6366f1;
+}
+
+.hero__title-desc {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
 }
 
 .hero__subtitle {
   font-size: 18px;
-  color: #6b7280;
+  color: #4b5563;
   line-height: 1.6;
   margin: 0 0 12px 0;
 }
 
-.hero__slogan {
+.hero__subtitle strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.hero__value {
   font-size: 16px;
-  font-style: italic;
-  color: #9ca3af;
+  color: #6b7280;
+  line-height: 1.6;
   margin: 0 0 32px 0;
 }
 
@@ -130,6 +148,10 @@
 
   .hero__title {
     font-size: 48px;
+  }
+
+  .hero__title-desc {
+    font-size: 36px;
   }
 
   .hero__subtitle {

@@ -10,26 +10,28 @@ export function Hero({ onTryClick, onExamplesClick }: Props) {
     <section className="hero">
       <div className="hero__container">
         <div className="hero__badge">
-          100% Free · No Sign-Up Required · Instant Export · Runs Locally
+          100% Free · No Sign-Up · Runs Locally · Instant Export
         </div>
 
         <h1 className="hero__title">
-          LineStack — Free Dialogue Screenshot Stitcher
+          <span className="hero__title-brand">LineStack</span>
+          <span className="hero__title-desc">Free Vertical Movie Screenshot Stitcher</span>
         </h1>
 
         <p className="hero__subtitle">
-          Turn TV & movie dialogue screenshots into a clean vertical story image
-          — perfect for X (Twitter), Reddit, Instagram, and TikTok.
+          Combine movie and TV show screenshots into a continuous vertical image
+          while <strong>preserving subtitles</strong> and <strong>cinematic sequence</strong>.
         </p>
 
-        <p className="hero__slogan">
-          Stack dialogue screenshots into a clean vertical story.
+        <p className="hero__value">
+          Perfect for sharing film moments on X (Twitter), Reddit, Instagram, and TikTok
+          — keep the story flowing, keep the subtitles readable.
         </p>
 
         <div className="hero__cta">
           <button className="hero__cta-primary" onClick={onTryClick}>
-            Try LineStack
-            <span className="hero__cta-hint">No account · No upload · Start instantly</span>
+            Start Stitching — It's Free
+            <span className="hero__cta-hint">No account · No upload · Works offline</span>
           </button>
           <button className="hero__cta-secondary" onClick={onExamplesClick}>
             See Examples
@@ -41,24 +43,24 @@ export function Hero({ onTryClick, onExamplesClick }: Props) {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <span>Completely Free — no hidden limits, no watermark traps</span>
+            <span>Subtitle Preservation — keep every line readable</span>
           </div>
           <div className="hero__trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <span>No Sign-Up Needed — open and use immediately</span>
+            <span>Vertical Continuity — scroll-friendly story format</span>
           </div>
           <div className="hero__trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <span>Local Processing — your screenshots stay on your device</span>
+            <span>Local Processing — your screenshots never leave your device</span>
           </div>
         </div>
 
         <p className="hero__privacy">
-          LineStack works entirely in your browser. Your images are never uploaded to any server.
+          LineStack runs entirely in your browser. No server uploads, no data collection.
         </p>
       </div>
     </section>

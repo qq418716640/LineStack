@@ -4,34 +4,34 @@ import './FAQ.css'
 
 const faqs = [
   {
-    question: 'Is LineStack really free?',
+    question: 'What is a vertical movie screenshot stitcher?',
     answer:
-      'Yes. LineStack is 100% free to use, with no sign-up, no paywalls, and no hidden limits.',
+      'A vertical movie screenshot stitcher is a specialized tool that combines multiple screenshots from movies and TV shows into a single, continuous vertical image. Unlike generic collage tools, it focuses on preserving subtitles and maintaining the cinematic sequence of scenes, creating a scroll-friendly format ideal for social media platforms.',
   },
   {
-    question: 'Do I need to create an account?',
+    question: 'Can I keep subtitles when stitching screenshots?',
     answer:
-      'No. You can start using LineStack instantly without creating an account.',
+      'Yes, subtitle preservation is a core feature of LineStack. You can adjust the "subtitle crop" slider to control exactly how much of the subtitle area is kept in each screenshot. This ensures all dialogue text remains readable in your final vertical image.',
   },
   {
-    question: 'What does LineStack do?',
+    question: 'How is LineStack different from collage or meme tools?',
     answer:
-      'LineStack stitches TV or movie dialogue screenshots into a single clean vertical story image for easy sharing.',
+      'LineStack is purpose-built for linear cinematic storytelling, not for creating grid layouts or adding text overlays. It maintains the sequential flow of movie scenes with proper subtitle handling, whereas collage tools arrange images in grids and meme generators focus on adding custom text. LineStack preserves the original cinematic context.',
   },
   {
-    question: 'Are my images uploaded to a server?',
+    question: 'Is LineStack free to use?',
     answer:
-      'No. All processing runs locally in your browser. Your screenshots stay on your device.',
+      'Yes, LineStack is completely free with no sign-up required, no hidden limits, and no watermark traps. It runs entirely in your browser, so your screenshots are never uploaded to any server.',
   },
   {
-    question: 'What export formats and sizes are supported?',
+    question: 'What output formats does LineStack support?',
     answer:
-      'LineStack exports JPG images. You can choose 720px (default) or 1080px width.',
+      'LineStack exports high-quality JPG images optimized for social media sharing. You can choose between 720px width (ideal for faster loading) or 1080px width (for higher resolution). Long sequences are automatically split into multiple files to ensure stable exports.',
   },
   {
-    question: 'Why did I get multiple output images?',
+    question: 'Why use vertical format for movie screenshots?',
     answer:
-      'Very long conversations may be automatically split into multiple JPG files to ensure stable exports on mobile devices.',
+      'Vertical format is optimized for mobile viewing and social media feeds. When you scroll through a vertical movie screenshot compilation, you experience the dialogue sequence naturally from top to bottom — just like reading subtitles in the original film. This format is thumb-friendly and works perfectly on platforms like Instagram Stories, TikTok, and Twitter.',
   },
 ]
 

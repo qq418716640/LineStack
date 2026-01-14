@@ -1,35 +1,38 @@
 import { forwardRef } from 'react'
+import { useStore } from '../store/StoreContext'
 import { ImageUpload } from './ImageUpload'
 import { ImageList } from './ImageList'
-import { BottomKeepBar } from './BottomKeepBar'
-import { ExportSettings } from './ExportSettings'
-import { ExportButton } from './ExportButton'
+import { ExportPanel } from './ExportPanel'
 import './ToolSection.css'
 
 export const ToolSection = forwardRef<HTMLElement>((_props, ref) => {
+  const { images } = useStore()
+  const hasImages = images.length > 0
+
   return (
     <section className="tool-section" ref={ref}>
       <div className="tool-section__container">
         <div className="tool-section__header">
           <h2 className="tool-section__title">
-            Free Dialogue Screenshot Stitcher (No Sign-Up)
+            Vertical Movie Screenshot Stitcher
           </h2>
+          <p className="tool-section__subtitle">
+            Upload your movie or TV screenshots, preserve subtitles, export as vertical story image
+          </p>
           <div className="tool-section__hints">
-            <span>Max 30 images</span>
-            <span>Export JPG</span>
-            <span>Default width: 720</span>
+            <span>Max 30 screenshots</span>
+            <span>JPG export</span>
+            <span>720px or 1080px</span>
           </div>
         </div>
 
-        <div className="tool-section__content">
-          <div className="tool-section__left">
+        <div className={`tool-section__content ${!hasImages ? 'tool-section__content--empty' : ''}`}>
+          <div className={`tool-section__left ${!hasImages ? 'tool-section__left--centered' : ''}`}>
             <ImageUpload />
-            <ImageList />
-            <BottomKeepBar />
+            {hasImages && <ImageList />}
           </div>
           <div className="tool-section__right">
-            <ExportSettings />
-            <ExportButton />
+            <ExportPanel disabled={!hasImages} />
           </div>
         </div>
       </div>

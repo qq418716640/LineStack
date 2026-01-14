@@ -55,15 +55,15 @@ export async function processImages(
   const shouldAddGap = enableKeyframeGap && keyframeCount >= 2
 
   let totalHeight = 0
-  let prevWasSubtitle = false
+  let prevImage: ProcessedImage | null = null
 
   for (const processed of processedImages) {
-    // Add gap when transitioning from subtitle to keyframe
-    if (shouldAddGap && prevWasSubtitle && processed.isKeyframe) {
+    // Add gap between images when gap is enabled (keyframe-keyframe or subtitle-keyframe)
+    if (shouldAddGap && prevImage && shouldInsertGap(prevImage, processed)) {
       totalHeight += gapSize
     }
     totalHeight += processed.height
-    prevWasSubtitle = !processed.isKeyframe
+    prevImage = processed
   }
 
   // Split into segments if needed
@@ -98,6 +98,20 @@ interface Segment {
   height: number
 }
 
+/**
+ * Determine if a gap should be inserted between two images
+ * Gap is inserted when:
+ * - Current image is a keyframe AND previous image is also a keyframe (keyframe-keyframe)
+ * - Current image is a keyframe AND previous image is a subtitle (subtitle-keyframe)
+ * No gap when:
+ * - Previous is keyframe and current is subtitle (keyframe-subtitle, subtitles follow keyframe)
+ * - Previous is subtitle and current is subtitle (subtitle-subtitle, continuous subtitles)
+ */
+function shouldInsertGap(prevImage: ProcessedImage, currentImage: ProcessedImage): boolean {
+  // Insert gap before keyframe if previous was keyframe or subtitle
+  return currentImage.isKeyframe && (prevImage.isKeyframe || !prevImage.isKeyframe)
+}
+
 function splitIntoSegments(
   images: ProcessedImage[],
   maxHeight: number,
@@ -107,11 +121,11 @@ function splitIntoSegments(
   const segments: Segment[] = []
   let currentSegment: ProcessedImage[] = []
   let currentHeight = 0
-  let prevWasSubtitle = false
+  let prevImage: ProcessedImage | null = null
 
   for (const img of images) {
-    // Add gap when transitioning from subtitle to keyframe
-    const gapBefore = shouldAddGap && prevWasSubtitle && img.isKeyframe ? gapSize : 0
+    // Calculate gap before this image
+    const gapBefore = shouldAddGap && prevImage && shouldInsertGap(prevImage, img) ? gapSize : 0
     const neededHeight = gapBefore + img.height
 
     // Check if adding this image would exceed max height
@@ -120,14 +134,14 @@ function splitIntoSegments(
       segments.push({ images: currentSegment, height: currentHeight })
       currentSegment = []
       currentHeight = 0
-      prevWasSubtitle = false
+      prevImage = null
     }
 
     // Recalculate gap for new segment context
-    const actualGap = shouldAddGap && prevWasSubtitle && img.isKeyframe ? gapSize : 0
+    const actualGap = shouldAddGap && prevImage && shouldInsertGap(prevImage, img) ? gapSize : 0
     currentHeight += actualGap + img.height
     currentSegment.push(img)
-    prevWasSubtitle = !img.isKeyframe
+    prevImage = img
   }
 
   if (currentSegment.length > 0) {
@@ -156,11 +170,11 @@ async function renderSegment(
   ctx.fillRect(0, 0, width, height)
 
   let y = 0
-  let prevWasSubtitle = false
+  let prevImage: ProcessedImage | null = null
 
   for (const img of images) {
-    // Add gap when transitioning from subtitle to keyframe
-    if (shouldAddGap && prevWasSubtitle && img.isKeyframe) {
+    // Add gap when appropriate (keyframe-keyframe or subtitle-keyframe)
+    if (shouldAddGap && prevImage && shouldInsertGap(prevImage, img)) {
       ctx.fillStyle = backgroundColor
       ctx.fillRect(0, y, width, gapSize)
       y += gapSize
@@ -183,7 +197,7 @@ async function renderSegment(
     }
 
     y += img.height
-    prevWasSubtitle = !img.isKeyframe
+    prevImage = img
   }
 
   // Draw watermark if provided

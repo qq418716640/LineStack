@@ -17,6 +17,12 @@
   font-size: 24px;
   font-weight: 700;
   color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.tool-section__subtitle {
+  font-size: 15px;
+  color: #6b7280;
   margin: 0 0 12px 0;
 }
 
@@ -46,8 +52,19 @@
   min-width: 0;
 }
 
+/* Empty state - center upload area */
+.tool-section__content--empty .tool-section__left--centered {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 @media (min-width: 900px) {
   .tool-section__content {
     grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .tool-section__content--empty {
+    grid-template-columns: 1fr 1fr;
   }
 }

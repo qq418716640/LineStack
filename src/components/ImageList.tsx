@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   DndContext,
   closestCenter,
@@ -14,11 +15,14 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { useStore } from '../store/StoreContext'
+import { ImageItem } from '../types'
 import { SortableImageItem } from './SortableImageItem'
+import { ImagePreviewModal } from './ImagePreviewModal'
 import './ImageList.css'
 
 export function ImageList() {
   const { images, reorderImages, clearAllImages } = useStore()
+  const [previewImage, setPreviewImage] = useState<ImageItem | null>(null)
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -44,6 +48,14 @@ export function ImageList() {
       const newIndex = images.findIndex((img) => img.id === over.id)
       reorderImages(oldIndex, newIndex)
     }
+  }
+
+  const handlePreview = (image: ImageItem) => {
+    setPreviewImage(image)
+  }
+
+  const handleClosePreview = () => {
+    setPreviewImage(null)
   }
 
   if (images.length === 0) {
@@ -78,11 +90,13 @@ export function ImageList() {
                 key={image.id}
                 image={image}
                 index={index}
+                onPreview={handlePreview}
               />
             ))}
           </div>
         </SortableContext>
       </DndContext>
+      <ImagePreviewModal image={previewImage} onClose={handleClosePreview} />
     </div>
   )
 }

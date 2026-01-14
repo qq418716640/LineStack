@@ -16,10 +16,29 @@
   align-items: center;
 }
 
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .header__logo {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.header__slogan {
+  font-size: 13px;
+  color: #6b7280;
+  padding-left: 16px;
+  border-left: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .header__slogan {
+    display: none;
+  }
 }
 
 .header__logo-icon {

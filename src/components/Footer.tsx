@@ -6,13 +6,16 @@ export function Footer() {
       <div className="footer__container">
         <div className="footer__brand">
           <span className="footer__logo">LineStack</span>
-          <span className="footer__tagline">
-            Stack dialogue screenshots into a clean vertical story.
-          </span>
+          <span className="footer__slogan">Vertical Movie Screenshot Stitcher</span>
         </div>
 
+        <p className="footer__summary">
+          LineStack helps you stitch movie and TV show screenshots into vertical story images
+          with preserved subtitles — free, private, and built for cinematic storytelling.
+        </p>
+
         <div className="footer__trust">
-          Free · No Sign-Up · Runs Locally
+          Free Forever · No Sign-Up · Local Processing · Subtitle Preservation
         </div>
 
         <div className="footer__links">

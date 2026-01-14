@@ -21,10 +21,17 @@
   margin-bottom: 4px;
 }
 
-.footer__tagline {
+.footer__slogan {
   font-size: 14px;
   color: #9ca3af;
-  font-style: italic;
+}
+
+.footer__summary {
+  font-size: 14px;
+  color: #9ca3af;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto 20px;
 }
 
 .footer__trust {

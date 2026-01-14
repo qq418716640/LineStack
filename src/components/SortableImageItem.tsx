@@ -8,10 +8,11 @@ import './SortableImageItem.css'
 interface Props {
   image: ImageItem
   index: number
+  onPreview?: (image: ImageItem) => void
 }
 
-export function SortableImageItem({ image, index }: Props) {
-  const { removeImage, moveToTop, toggleImageType, settings } = useStore()
+export function SortableImageItem({ image, index, onPreview }: Props) {
+  const { removeImage, moveToTop, toggleImageType } = useStore()
   const {
     attributes,
     listeners,
@@ -30,6 +31,12 @@ export function SortableImageItem({ image, index }: Props) {
   const isFirst = index === 0
   const isKeyframe = image.type === 'keyframe'
 
+  const handlePreviewClick = () => {
+    if (onPreview) {
+      onPreview(image)
+    }
+  }
+
   return (
     <div
       ref={setNodeRef}
@@ -47,20 +54,19 @@ export function SortableImageItem({ image, index }: Props) {
         </svg>
       </div>
 
-      <div className="image-item__preview-wrapper">
+      <div className="image-item__preview-wrapper" onClick={handlePreviewClick}>
         <img
           src={image.previewUrl}
           alt={`Screenshot ${index + 1}`}
           className="image-item__preview"
         />
-        {!isKeyframe && (
-          <div
-            className="image-item__crop-overlay"
-            style={{
-              height: `${(1 - settings.bottomKeepRatio) * 100}%`,
-            }}
-          />
-        )}
+        <div className="image-item__zoom-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+            <path d="M11 8v6M8 11h6" />
+          </svg>
+        </div>
       </div>
 
       <div className="image-item__info">
@@ -89,17 +95,15 @@ export function SortableImageItem({ image, index }: Props) {
         )}
         {!isFirst && (
           <button
-            className="image-item__btn"
+            className={`image-item__btn ${isKeyframe ? 'image-item__btn--keyframe-active' : ''}`}
             onClick={() => {
               toggleImageType(image.id)
               trackToggleKeyframe()
             }}
             title={isKeyframe ? 'Set as Subtitle' : 'Set as Keyframe'}
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5z" />
-              <path d="M2 17l10 5 10-5" />
-              <path d="M2 12l10 5 10-5" />
+            <svg viewBox="0 0 24 24" fill={isKeyframe ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </button>
         )}
