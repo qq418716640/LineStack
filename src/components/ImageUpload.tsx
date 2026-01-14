@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react'
 import { useStore } from '../store/StoreContext'
 import { MAX_IMAGES } from '../types'
+import { trackUploadImages } from '../utils/umami'
 import './ImageUpload.css'
 
 export function ImageUpload() {
@@ -15,6 +16,7 @@ export function ImageUpload() {
       )
       if (imageFiles.length > 0) {
         addImages(imageFiles)
+        trackUploadImages(imageFiles.length)
       }
     },
     [addImages]

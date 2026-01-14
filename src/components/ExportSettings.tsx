@@ -1,5 +1,6 @@
 import { useStore } from '../store/StoreContext'
 import { OutputWidth, BackgroundColor, MAX_WATERMARK_LENGTH } from '../types'
+import { trackChangeSettings } from '../utils/umami'
 import './ExportSettings.css'
 
 export function ExportSettings() {
@@ -14,14 +15,17 @@ export function ExportSettings() {
 
   const handleWidthChange = (width: OutputWidth) => {
     updateSettings({ outputWidth: width })
+    trackChangeSettings('width')
   }
 
   const handleGapToggle = () => {
     updateSettings({ enableKeyframeGap: !settings.enableKeyframeGap })
+    trackChangeSettings('gap')
   }
 
   const handleBackgroundChange = (color: BackgroundColor) => {
     updateSettings({ backgroundColor: color })
+    trackChangeSettings('background')
   }
 
   const handleWatermarkChange = (e: React.ChangeEvent<HTMLInputElement>) => {

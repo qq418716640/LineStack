@@ -1,8 +1,11 @@
+import { useRef } from 'react'
 import { useStore } from '../store/StoreContext'
+import { trackAdjustCrop } from '../utils/umami'
 import './BottomKeepBar.css'
 
 export function BottomKeepBar() {
   const { settings, updateSettings, images } = useStore()
+  const hasTracked = useRef(false)
 
   const subtitleCount = images.filter((img) => img.type === 'subtitle').length
 
@@ -13,6 +16,11 @@ export function BottomKeepBar() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value)
     updateSettings({ bottomKeepRatio: value })
+    // Only track once per session to avoid spam
+    if (!hasTracked.current) {
+      trackAdjustCrop()
+      hasTracked.current = true
+    }
   }
 
   return (

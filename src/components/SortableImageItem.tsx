@@ -2,6 +2,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { ImageItem } from '../types'
 import { useStore } from '../store/StoreContext'
+import { trackToggleKeyframe } from '../utils/umami'
 import './SortableImageItem.css'
 
 interface Props {
@@ -89,7 +90,10 @@ export function SortableImageItem({ image, index }: Props) {
         {!isFirst && (
           <button
             className="image-item__btn"
-            onClick={() => toggleImageType(image.id)}
+            onClick={() => {
+              toggleImageType(image.id)
+              trackToggleKeyframe()
+            }}
             title={isKeyframe ? 'Set as Subtitle' : 'Set as Keyframe'}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

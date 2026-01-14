@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useStore } from '../store/StoreContext'
 import { processImages, downloadBlob } from '../utils/imageProcessor'
+import { trackExportStart, trackExportSuccess, trackExportError } from '../utils/umami'
 import './ExportButton.css'
 
 export function ExportButton() {
@@ -11,6 +12,7 @@ export function ExportButton() {
     if (images.length === 0 || isExporting) return
 
     setIsExporting(true)
+    trackExportStart(images.length, settings.outputWidth)
     updateExportProgress({
       status: 'processing',
       current: 0,
@@ -50,6 +52,7 @@ export function ExportButton() {
         status: 'done',
         message: `Successfully exported ${blobs.length} image(s)!`,
       })
+      trackExportSuccess(blobs.length)
 
       // Reset after a delay
       setTimeout(() => {
@@ -62,6 +65,8 @@ export function ExportButton() {
       }, 3000)
     } catch (error) {
       console.error('Export failed:', error)
+      const errorMessage = error instanceof Error ? error.message : 'unknown'
+      trackExportError(errorMessage)
       updateExportProgress({
         status: 'error',
         message: 'Export failed. Please try again.',

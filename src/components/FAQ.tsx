@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { trackFaqExpand } from '../utils/umami'
 import './FAQ.css'
 
 const faqs = [
@@ -38,7 +39,11 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
+    const isOpening = openIndex !== index
+    setOpenIndex(isOpening ? index : null)
+    if (isOpening) {
+      trackFaqExpand(faqs[index].question)
+    }
   }
 
   return (
