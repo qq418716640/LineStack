@@ -31,6 +31,16 @@ export function SortableImageItem({ image, index, onPreview }: Props) {
   const isFirst = index === 0
   const isKeyframe = image.type === 'keyframe'
 
+  // Get display name from file name
+  const getDisplayName = (fileName: string) => {
+    // Remove extension and truncate if too long
+    const nameWithoutExt = fileName.replace(/\.[^/.]+$/, '')
+    if (nameWithoutExt.length > 20) {
+      return nameWithoutExt.substring(0, 17) + '...'
+    }
+    return nameWithoutExt
+  }
+
   const handlePreviewClick = () => {
     if (onPreview) {
       onPreview(image)
@@ -70,7 +80,9 @@ export function SortableImageItem({ image, index, onPreview }: Props) {
       </div>
 
       <div className="image-item__info">
-        <span className="image-item__index">#{index + 1}</span>
+        <span className="image-item__name" title={image.file.name}>
+          {getDisplayName(image.file.name)}
+        </span>
         <span
           className={`image-item__type ${
             isKeyframe ? 'image-item__type--keyframe' : 'image-item__type--subtitle'

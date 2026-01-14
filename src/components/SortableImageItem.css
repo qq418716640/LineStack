@@ -97,10 +97,14 @@
   min-width: 0;
 }
 
-.image-item__index {
-  font-size: 14px;
-  font-weight: 600;
+.image-item__name {
+  font-size: 13px;
+  font-weight: 500;
   color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .image-item__type {

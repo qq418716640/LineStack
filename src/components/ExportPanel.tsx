@@ -14,7 +14,7 @@ export function ExportPanel({ disabled = false }: Props) {
   const [isExporting, setIsExporting] = useState(false)
   const cropTracked = useRef(false)
 
-  const firstImage = images[0]
+  const firstSubtitleImage = images.find((img) => img.type === 'subtitle')
   const keyframeCount = images.filter((img) => img.type === 'keyframe').length
   const subtitleCount = images.filter((img) => img.type === 'subtitle').length
   const hasImages = images.length > 0
@@ -138,27 +138,30 @@ export function ExportPanel({ disabled = false }: Props) {
           </span>
         </div>
         <div className="export-panel__crop">
-          <div className="export-panel__crop-preview">
-            {firstImage ? (
-              <img src={firstImage.previewUrl} alt="Preview" />
-            ) : (
-              <div className="export-panel__crop-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <line x1="3" y1="9" x2="21" y2="9" />
-                  <line x1="3" y1="15" x2="21" y2="15" />
-                </svg>
+          <div className="export-panel__crop-preview-wrapper">
+            <div className="export-panel__crop-preview">
+              {firstSubtitleImage ? (
+                <img src={firstSubtitleImage.previewUrl} alt="Preview" />
+              ) : (
+                <div className="export-panel__crop-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                    <line x1="3" y1="15" x2="21" y2="15" />
+                  </svg>
+                  <span>No subtitle image</span>
+                </div>
+              )}
+              <div
+                className="export-panel__crop-overlay"
+                style={{ height: `${(1 - settings.bottomKeepRatio) * 100}%` }}
+              />
+              <div
+                className="export-panel__crop-divider"
+                style={{ top: `${(1 - settings.bottomKeepRatio) * 100}%` }}
+              >
+                <span className="export-panel__crop-label">Keep</span>
               </div>
-            )}
-            <div
-              className="export-panel__crop-overlay"
-              style={{ height: `${(1 - settings.bottomKeepRatio) * 100}%` }}
-            />
-            <div
-              className="export-panel__crop-divider"
-              style={{ top: `${(1 - settings.bottomKeepRatio) * 100}%` }}
-            >
-              <span className="export-panel__crop-label">Keep</span>
             </div>
           </div>
           <div className="export-panel__crop-slider">
