@@ -1,0 +1,58 @@
+.upload-zone {
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 32px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fafafa;
+}
+
+.upload-zone:hover {
+  border-color: #6366f1;
+  background: #f0f0ff;
+}
+
+.upload-zone--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: #f3f4f6;
+}
+
+.upload-zone--disabled:hover {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+}
+
+.upload-input {
+  display: none;
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  color: #9ca3af;
+}
+
+.upload-zone:hover .upload-icon {
+  color: #6366f1;
+}
+
+.upload-text {
+  font-size: 16px;
+  color: #374151;
+  margin: 0;
+}
+
+.upload-hint {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}

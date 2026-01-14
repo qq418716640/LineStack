@@ -1,0 +1,53 @@
+.tool-section {
+  padding: 60px 20px;
+  background: #f3f4f6;
+}
+
+.tool-section__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tool-section__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.tool-section__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+.tool-section__hints {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tool-section__hints span {
+  font-size: 13px;
+  color: #6b7280;
+  padding: 4px 12px;
+  background: white;
+  border-radius: 4px;
+}
+
+.tool-section__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.tool-section__left,
+.tool-section__right {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .tool-section__content {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
