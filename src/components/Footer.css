@@ -15,10 +15,21 @@
 }
 
 .footer__logo {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.footer__logo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__logo-text {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .footer__slogan {

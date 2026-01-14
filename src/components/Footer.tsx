@@ -5,7 +5,10 @@ export function Footer() {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__brand">
-          <span className="footer__logo">LineStack</span>
+          <div className="footer__logo">
+            <img src="/logo-white.svg" alt="LineStack" className="footer__logo-icon" />
+            <span className="footer__logo-text">LineStack</span>
+          </div>
           <span className="footer__slogan">Vertical Movie Screenshot Stitcher</span>
         </div>
 
