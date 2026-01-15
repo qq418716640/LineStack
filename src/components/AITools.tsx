@@ -7,7 +7,7 @@ import './AITools.css'
 const tools = [
   {
     id: 'tool-1',
-    image: 'ai-tools/tool-1.webp',
+    image: 'aitools/aitools_1.jpg',
     title: 'Remove People from Photos',
     description: 'Remove unwanted people from photos with AI automatically, no manual editing needed.',
     link: 'https://www.ailogocreator.io/ai-tools/remove-people-from-photos',
@@ -15,7 +15,7 @@ const tools = [
   },
   {
     id: 'tool-2',
-    image: 'ai-tools/tool-2.webp',
+    image: 'aitools/aitools_2.jpg',
     title: 'Watermark Remover',
     description: 'Remove watermarks from photos with AI.',
     link: 'https://www.ailogocreator.io/ai-tools/watermark-remover',
@@ -23,7 +23,7 @@ const tools = [
   },
   {
     id: 'tool-3',
-    image: 'ai-tools/tool-3.webp',
+    image: 'aitools/aitools_3.jpg',
     title: 'Background Removal (Cutout)',
     description: 'Remove photo background to transparent or plain background.',
     link: 'https://www.ailogocreator.io/ai-tools/cutout',
@@ -31,7 +31,7 @@ const tools = [
   },
   {
     id: 'tool-4',
-    image: 'ai-tools/tool-4.webp',
+    image: 'aitools/aitools_4.jpg',
     title: 'White Background Tool',
     description: 'Change photo background to pure white for e-commerce or clean display.',
     link: 'https://www.ailogocreator.io/ai-tools/white-background',
@@ -39,7 +39,7 @@ const tools = [
   },
   {
     id: 'tool-5',
-    image: 'ai-tools/tool-5.webp',
+    image: 'aitools/aitools_5.jpg',
     title: 'Christmas Polaroid Photo',
     description: 'Turn any photo into festive holiday Polaroid style prints.',
     link: 'https://www.ailogocreator.io/ai-tools/christmas-polaroid-photo',
@@ -47,7 +47,7 @@ const tools = [
   },
   {
     id: 'tool-6',
-    image: 'ai-tools/tool-6.webp',
+    image: 'aitools/aitools_6.jpg',
     title: 'Christmas Sweater Photo',
     description: 'Add a festive sweater effect to photos for holiday themes.',
     link: 'https://www.ailogocreator.io/ai-tools/christmas-sweater-photo',
@@ -55,7 +55,7 @@ const tools = [
   },
   {
     id: 'tool-7',
-    image: 'ai-tools/tool-7.webp',
+    image: 'aitools/aitools_7.jpg',
     title: 'Add Santa Hat to Photo',
     description: 'Add a Santa hat overlay to photos instantly with AI.',
     link: 'https://www.ailogocreator.io/ai-tools/add-santa-hat-to-photo',
@@ -63,7 +63,7 @@ const tools = [
   },
   {
     id: 'tool-8',
-    image: 'ai-tools/tool-8.webp',
+    image: 'aitools/aitools_8.jpg',
     title: 'Add Santa to Photo',
     description: 'Add Santa Claus character to a photo for a festive look.',
     link: 'https://www.ailogocreator.io/ai-tools/add-santa-to-photo',

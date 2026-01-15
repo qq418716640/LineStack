@@ -63,7 +63,7 @@ const examples = [
 
 ### 位置
 - 文件：`src/components/AITools.tsx`
-- 存放目录：`public/ai-tools/`
+- 存放目录：`public/aitools/`
 
 ### 需要准备的素材
 8 个 AI 工具的缩略图和信息。
@@ -74,7 +74,7 @@ const examples = [
 
 ### 替换步骤
 
-1. 将准备好的图片放入 `public/ai-tools/` 目录
+1. 将准备好的图片放入 `public/aitools/` 目录
 
 2. 编辑 `src/components/AITools.tsx`，修改 `tools` 数组：
 
@@ -82,7 +82,7 @@ const examples = [
 const tools = [
   {
     id: 'tool-1',
-    image: '/ai-tools/tool-1.jpg',
+    image: '/aitools/tool-1.jpg',
     title: '工具名称',           // 修改
     description: '工具描述',     // 修改
     link: 'https://...',        // 修改为实际链接
@@ -124,7 +124,7 @@ public/
 │   ├── example-4.jpg
 │   ├── example-5.jpg
 │   └── example-6.jpg
-└── ai-tools/
+└── aitools/
     ├── tool-1.jpg
     ├── tool-2.jpg
     ├── tool-3.jpg
