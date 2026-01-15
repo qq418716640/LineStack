@@ -46,14 +46,14 @@ function App() {
         />
         <main>
           <Hero onTryClick={scrollToTool} onExamplesClick={scrollToExamples} />
-          <WhatIs />
-          <HowItWorks />
           <ToolSection ref={toolRef} />
+          <Examples ref={examplesRef} />
+          <HowItWorks />
+          <WhatIs />
           <Differentiation />
           <UseCases />
-          <Examples ref={examplesRef} />
-          <AITools ref={moreToolsRef} />
           <FAQ />
+          <AITools ref={moreToolsRef} />
         </main>
         <Footer />
       </div>
