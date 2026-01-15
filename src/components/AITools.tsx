@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import './AITools.css'
 
 // Placeholder AI tools - replace with actual data
@@ -69,9 +70,9 @@ const tools = [
   },
 ]
 
-export function AITools() {
+export const AITools = forwardRef<HTMLElement>((_props, ref) => {
   return (
-    <section className="ai-tools">
+    <section className="ai-tools" ref={ref}>
       <div className="ai-tools__container">
         <h2 className="ai-tools__title">More Free AI Tools & Inspirations</h2>
         <p className="ai-tools__subtitle">
@@ -111,4 +112,6 @@ export function AITools() {
       </div>
     </section>
   )
-}
+})
+
+AITools.displayName = 'AITools'

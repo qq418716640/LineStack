@@ -11,7 +11,6 @@ import { UseCases } from './components/UseCases'
 import { Examples } from './components/Examples'
 import { AITools } from './components/AITools'
 import { FAQ } from './components/FAQ'
-import { GoPro } from './components/GoPro'
 import { Footer } from './components/Footer'
 import { trackNavClick } from './utils/umami'
 import './App.css'
@@ -19,7 +18,7 @@ import './App.css'
 function App() {
   const toolRef = useRef<HTMLElement>(null)
   const examplesRef = useRef<HTMLElement>(null)
-  const goProRef = useRef<HTMLElement>(null)
+  const moreToolsRef = useRef<HTMLElement>(null)
 
   const scrollToTool = () => {
     trackNavClick('try_linestack')
@@ -31,9 +30,9 @@ function App() {
     examplesRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const scrollToGoPro = () => {
-    trackNavClick('go_pro')
-    goProRef.current?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToMoreTools = () => {
+    trackNavClick('more_tools')
+    moreToolsRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -43,7 +42,7 @@ function App() {
         <Header
           onTryClick={scrollToTool}
           onExamplesClick={scrollToExamples}
-          onGoProClick={scrollToGoPro}
+          onMoreToolsClick={scrollToMoreTools}
         />
         <main>
           <Hero onTryClick={scrollToTool} onExamplesClick={scrollToExamples} />
@@ -53,9 +52,8 @@ function App() {
           <Differentiation />
           <UseCases />
           <Examples ref={examplesRef} />
-          <AITools />
+          <AITools ref={moreToolsRef} />
           <FAQ />
-          <GoPro ref={goProRef} />
         </main>
         <Footer />
       </div>
