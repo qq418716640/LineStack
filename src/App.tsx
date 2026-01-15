@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { StoreProvider } from './store/StoreContext'
 import { UmamiScript } from './components/UmamiScript'
+import { GTMScript } from './components/GTMScript'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { WhatIs } from './components/WhatIs'
@@ -38,6 +39,7 @@ function App() {
   return (
     <StoreProvider>
       <UmamiScript />
+      <GTMScript />
       <div className="app">
         <Header
           onTryClick={scrollToTool}
