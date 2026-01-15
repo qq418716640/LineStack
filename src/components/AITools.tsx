@@ -5,10 +5,11 @@ import './AITools.css'
 const tools = [
   {
     id: 'tool-1',
-    image: '/ai-tools/tool-1.jpg',
-    title: 'AI Logo Creator',
-    description: 'Create stunning logos with AI in seconds',
-    link: '#',
+    image: '/ai-tools/tool-1.webp',
+    title: 'Remove People from Photos',
+    description: 'Remove unwanted people from photos with AI automatically, no manual editing needed.',
+    link: 'https://www.ailogocreator.io/ai-tools/remove-people-from-photos',
+    hasImage: true,
   },
   {
     id: 'tool-2',
@@ -16,6 +17,7 @@ const tools = [
     title: 'AI Background Remover',
     description: 'Remove backgrounds from images instantly',
     link: '#',
+    hasImage: false,
   },
   {
     id: 'tool-3',
@@ -23,6 +25,7 @@ const tools = [
     title: 'AI Image Upscaler',
     description: 'Enhance image resolution with AI',
     link: '#',
+    hasImage: false,
   },
   {
     id: 'tool-4',
@@ -30,6 +33,7 @@ const tools = [
     title: 'AI Art Generator',
     description: 'Generate unique art from text prompts',
     link: '#',
+    hasImage: false,
   },
   {
     id: 'tool-5',
@@ -37,6 +41,7 @@ const tools = [
     title: 'AI Photo Editor',
     description: 'Edit photos with intelligent AI tools',
     link: '#',
+    hasImage: false,
   },
   {
     id: 'tool-6',
@@ -44,6 +49,7 @@ const tools = [
     title: 'AI Color Palette',
     description: 'Generate beautiful color palettes',
     link: '#',
+    hasImage: false,
   },
   {
     id: 'tool-7',
@@ -51,6 +57,7 @@ const tools = [
     title: 'AI Font Pairing',
     description: 'Find perfect font combinations',
     link: '#',
+    hasImage: false,
   },
   {
     id: 'tool-8',
@@ -58,6 +65,7 @@ const tools = [
     title: 'AI Mockup Generator',
     description: 'Create product mockups easily',
     link: '#',
+    hasImage: false,
   },
 ]
 
@@ -79,17 +87,18 @@ export function AITools() {
               rel="noopener noreferrer"
             >
               <div className="ai-tool-card__image">
-                {/* Placeholder - replace with actual images */}
-                <div className="ai-tool-card__placeholder">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                  </svg>
-                </div>
-                {/* Uncomment when images are ready:
-                <img src={tool.image} alt={tool.title} />
-                */}
+                {tool.hasImage ? (
+                  <img src={tool.image} alt={tool.title} />
+                ) : (
+                  <div className="ai-tool-card__placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                      <path d="M2 12l10 5 10-5" />
+                    </svg>
+                    <span>Coming Soon</span>
+                  </div>
+                )}
               </div>
               <div className="ai-tool-card__info">
                 <h3 className="ai-tool-card__title">{tool.title}</h3>
