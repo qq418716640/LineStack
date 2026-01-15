@@ -25,8 +25,8 @@
 
 .examples__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .example-card {
@@ -100,9 +100,10 @@
   margin: 0;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .examples__grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
