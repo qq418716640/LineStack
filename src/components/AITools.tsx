@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import { getAssetUrl } from '../utils/assets'
 import './AITools.css'
 
 // Placeholder AI tools - replace with actual data
@@ -6,7 +7,7 @@ import './AITools.css'
 const tools = [
   {
     id: 'tool-1',
-    image: '/ai-tools/tool-1.webp',
+    image: 'ai-tools/tool-1.webp',
     title: 'Remove People from Photos',
     description: 'Remove unwanted people from photos with AI automatically, no manual editing needed.',
     link: 'https://www.ailogocreator.io/ai-tools/remove-people-from-photos',
@@ -14,7 +15,7 @@ const tools = [
   },
   {
     id: 'tool-2',
-    image: '/ai-tools/tool-2.webp',
+    image: 'ai-tools/tool-2.webp',
     title: 'Watermark Remover',
     description: 'Remove watermarks from photos with AI.',
     link: 'https://www.ailogocreator.io/ai-tools/watermark-remover',
@@ -22,7 +23,7 @@ const tools = [
   },
   {
     id: 'tool-3',
-    image: '/ai-tools/tool-3.webp',
+    image: 'ai-tools/tool-3.webp',
     title: 'Background Removal (Cutout)',
     description: 'Remove photo background to transparent or plain background.',
     link: 'https://www.ailogocreator.io/ai-tools/cutout',
@@ -30,7 +31,7 @@ const tools = [
   },
   {
     id: 'tool-4',
-    image: '/ai-tools/tool-4.webp',
+    image: 'ai-tools/tool-4.webp',
     title: 'White Background Tool',
     description: 'Change photo background to pure white for e-commerce or clean display.',
     link: 'https://www.ailogocreator.io/ai-tools/white-background',
@@ -38,7 +39,7 @@ const tools = [
   },
   {
     id: 'tool-5',
-    image: '/ai-tools/tool-5.webp',
+    image: 'ai-tools/tool-5.webp',
     title: 'Christmas Polaroid Photo',
     description: 'Turn any photo into festive holiday Polaroid style prints.',
     link: 'https://www.ailogocreator.io/ai-tools/christmas-polaroid-photo',
@@ -46,7 +47,7 @@ const tools = [
   },
   {
     id: 'tool-6',
-    image: '/ai-tools/tool-6.webp',
+    image: 'ai-tools/tool-6.webp',
     title: 'Christmas Sweater Photo',
     description: 'Add a festive sweater effect to photos for holiday themes.',
     link: 'https://www.ailogocreator.io/ai-tools/christmas-sweater-photo',
@@ -54,7 +55,7 @@ const tools = [
   },
   {
     id: 'tool-7',
-    image: '/ai-tools/tool-7.webp',
+    image: 'ai-tools/tool-7.webp',
     title: 'Add Santa Hat to Photo',
     description: 'Add a Santa hat overlay to photos instantly with AI.',
     link: 'https://www.ailogocreator.io/ai-tools/add-santa-hat-to-photo',
@@ -62,7 +63,7 @@ const tools = [
   },
   {
     id: 'tool-8',
-    image: '/ai-tools/tool-8.webp',
+    image: 'ai-tools/tool-8.webp',
     title: 'Add Santa to Photo',
     description: 'Add Santa Claus character to a photo for a festive look.',
     link: 'https://www.ailogocreator.io/ai-tools/add-santa-to-photo',
@@ -89,7 +90,7 @@ export const AITools = forwardRef<HTMLElement>((_props, ref) => {
             >
               <div className="ai-tool-card__image">
                 {tool.hasImage ? (
-                  <img src={tool.image} alt={tool.title} />
+                  <img src={getAssetUrl(tool.image)} alt={tool.title} />
                 ) : (
                   <div className="ai-tool-card__placeholder">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

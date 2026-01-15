@@ -1,3 +1,4 @@
+import { getAssetUrl } from '../utils/assets'
 import './Footer.css'
 
 export function Footer() {
@@ -6,7 +7,7 @@ export function Footer() {
       <div className="footer__container">
         <div className="footer__brand">
           <div className="footer__logo">
-            <img src="/logo-white.svg" alt="LineStack" className="footer__logo-icon" />
+            <img src={getAssetUrl('logo-white.svg')} alt="LineStack" className="footer__logo-icon" />
             <span className="footer__logo-text">LineStack</span>
           </div>
           <span className="footer__slogan">Vertical Movie Screenshot Stitcher</span>

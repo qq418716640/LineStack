@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { getAssetUrl } from '../utils/assets'
 import './Header.css'
 
 interface Props {
@@ -20,7 +21,7 @@ export function Header({ onTryClick, onExamplesClick, onMoreToolsClick }: Props)
       <div className="header__container">
         <div className="header__brand">
           <div className="header__logo">
-            <img src="/logo.svg" alt="LineStack" className="header__logo-icon" />
+            <img src={getAssetUrl('logo.svg')} alt="LineStack" className="header__logo-icon" />
             <span className="header__logo-text">LineStack</span>
           </div>
           <span className="header__slogan">Vertical Movie Screenshot Stitcher</span>

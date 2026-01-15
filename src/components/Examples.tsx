@@ -1,25 +1,26 @@
 import { forwardRef, useState } from 'react'
+import { getAssetUrl } from '../utils/assets'
 import './Examples.css'
 
 // Examples - See ASSETS_GUIDE.md for replacement instructions
 const examples = [
   {
     id: 'example-1',
-    image: '/examples/example-1.jpg',
+    image: 'examples/example-1.jpg',
     title: 'Inception',
     description: '"You\'re waiting for a train..."',
     hasImage: true,
   },
   {
     id: 'example-2',
-    image: '/examples/example-3.jpg',
+    image: 'examples/example-3.jpg',
     title: 'Léon: The Professional',
     description: '"Is life always this hard?"',
     hasImage: true,
   },
   {
     id: 'example-3',
-    image: '/examples/example-2.jpg',
+    image: 'examples/example-2.jpg',
     title: 'Yes Minister',
     description: '"The four-stage strategy"',
     hasImage: true,
@@ -51,10 +52,10 @@ export const Examples = forwardRef<HTMLElement>((_props, ref) => {
             <div key={example.id} className="example-card">
               <div
                 className={`example-card__image ${example.hasImage ? 'example-card__image--clickable' : ''}`}
-                onClick={() => example.hasImage && openModal(example.image, example.title)}
+                onClick={() => example.hasImage && openModal(getAssetUrl(example.image), example.title)}
               >
                 {example.hasImage ? (
-                  <img src={example.image} alt={example.title} />
+                  <img src={getAssetUrl(example.image)} alt={example.title} />
                 ) : (
                   <div className="example-card__placeholder">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
