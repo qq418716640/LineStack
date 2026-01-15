@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './Header.css'
 
 interface Props {
@@ -7,6 +8,13 @@ interface Props {
 }
 
 export function Header({ onTryClick, onExamplesClick, onMoreToolsClick }: Props) {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleMenuClick = (callback: () => void) => {
+    setMenuOpen(false)
+    callback()
+  }
+
   return (
     <header className="header">
       <div className="header__container">
@@ -17,7 +25,9 @@ export function Header({ onTryClick, onExamplesClick, onMoreToolsClick }: Props)
           </div>
           <span className="header__slogan">Vertical Movie Screenshot Stitcher</span>
         </div>
-        <nav className="header__nav">
+
+        {/* Desktop nav */}
+        <nav className="header__nav header__nav--desktop">
           <button className="header__nav-link header__nav-link--primary" onClick={onTryClick}>
             Try It Free
           </button>
@@ -28,6 +38,34 @@ export function Header({ onTryClick, onExamplesClick, onMoreToolsClick }: Props)
             More Tools
           </button>
         </nav>
+
+        {/* Mobile nav */}
+        <div className="header__mobile-nav">
+          <button className="header__nav-link header__nav-link--primary" onClick={onTryClick}>
+            Try It Free
+          </button>
+          <button
+            className={`header__hamburger ${menuOpen ? 'header__hamburger--open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="header__dropdown">
+            <button className="header__dropdown-link" onClick={() => handleMenuClick(onExamplesClick)}>
+              Examples
+            </button>
+            <button className="header__dropdown-link" onClick={() => handleMenuClick(onMoreToolsClick)}>
+              More Tools
+            </button>
+          </div>
+        )}
       </div>
     </header>
   )
