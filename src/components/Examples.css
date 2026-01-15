@@ -47,10 +47,19 @@
   background: #e5e7eb;
 }
 
+.example-card__image--clickable {
+  cursor: pointer;
+}
+
+.example-card__image--clickable:hover img {
+  transform: scale(1.02);
+}
+
 .example-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.2s ease;
 }
 
 .example-card__placeholder {
@@ -102,4 +111,78 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
+}
+
+/* Modal styles */
+.examples-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.examples-modal__content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.examples-modal__content img {
+  max-width: 100%;
+  max-height: calc(90vh - 60px);
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.examples-modal__close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.examples-modal__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.examples-modal__close svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.examples-modal__title {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: white;
+  text-align: center;
 }

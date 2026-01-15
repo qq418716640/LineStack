@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, useState } from 'react'
 import './Examples.css'
 
 // Examples - See ASSETS_GUIDE.md for replacement instructions
@@ -12,21 +12,33 @@ const examples = [
   },
   {
     id: 'example-2',
-    image: '/examples/example-2.jpg',
-    title: 'Yes Minister',
-    description: '"The four-stage strategy"',
-    hasImage: true,
-  },
-  {
-    id: 'example-3',
     image: '/examples/example-3.jpg',
     title: 'Léon: The Professional',
     description: '"Is life always this hard?"',
     hasImage: true,
   },
+  {
+    id: 'example-3',
+    image: '/examples/example-2.jpg',
+    title: 'Yes Minister',
+    description: '"The four-stage strategy"',
+    hasImage: true,
+  },
 ]
 
 export const Examples = forwardRef<HTMLElement>((_props, ref) => {
+  const [modalImage, setModalImage] = useState<{ src: string; title: string } | null>(null)
+
+  const openModal = (src: string, title: string) => {
+    setModalImage({ src, title })
+    document.body.style.overflow = 'hidden'
+  }
+
+  const closeModal = () => {
+    setModalImage(null)
+    document.body.style.overflow = ''
+  }
+
   return (
     <section className="examples" ref={ref}>
       <div className="examples__container">
@@ -37,7 +49,10 @@ export const Examples = forwardRef<HTMLElement>((_props, ref) => {
         <div className="examples__grid">
           {examples.map((example) => (
             <div key={example.id} className="example-card">
-              <div className="example-card__image">
+              <div
+                className={`example-card__image ${example.hasImage ? 'example-card__image--clickable' : ''}`}
+                onClick={() => example.hasImage && openModal(example.image, example.title)}
+              >
                 {example.hasImage ? (
                   <img src={example.image} alt={example.title} />
                 ) : (
@@ -60,6 +75,21 @@ export const Examples = forwardRef<HTMLElement>((_props, ref) => {
           ))}
         </div>
       </div>
+
+      {modalImage && (
+        <div className="examples-modal" onClick={closeModal}>
+          <div className="examples-modal__content" onClick={(e) => e.stopPropagation()}>
+            <button className="examples-modal__close" onClick={closeModal}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <img src={modalImage.src} alt={modalImage.title} />
+            <p className="examples-modal__title">{modalImage.title}</p>
+          </div>
+        </div>
+      )}
     </section>
   )
 })
