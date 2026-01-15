@@ -13,37 +13,16 @@ const examples = [
   {
     id: 'example-2',
     image: '/examples/example-2.jpg',
-    title: 'Dark Theme',
-    description: 'Dark gap · 1080px',
-    hasImage: false,
+    title: 'Yes Minister',
+    description: '"The four-stage strategy"',
+    hasImage: true,
   },
   {
     id: 'example-3',
     image: '/examples/example-3.jpg',
-    title: 'Movie Scene',
-    description: 'Multiple keyframes · 720px',
-    hasImage: false,
-  },
-  {
-    id: 'example-4',
-    image: '/examples/example-4.jpg',
-    title: 'TV Series',
-    description: 'Subtitle only · 720px',
-    hasImage: false,
-  },
-  {
-    id: 'example-5',
-    image: '/examples/example-5.jpg',
-    title: 'Long Conversation',
-    description: 'Auto-split · 720px',
-    hasImage: false,
-  },
-  {
-    id: 'example-6',
-    image: '/examples/example-6.jpg',
-    title: 'With Watermark',
-    description: 'Custom watermark · 1080px',
-    hasImage: false,
+    title: 'Léon: The Professional',
+    description: '"Is life always this hard?"',
+    hasImage: true,
   },
 ]
 
